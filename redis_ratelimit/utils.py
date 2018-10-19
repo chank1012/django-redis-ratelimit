@@ -1,8 +1,13 @@
+import django
 import re
 
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
-from django.core.urlresolvers import resolve
+
+if django.__version__[0] == '1':
+    from django.core.urlresolvers import resolve
+else:
+    from django.urls import resolve
 
 rate_re = re.compile('([\d]+)/([\d]*)([smhd])')
 
